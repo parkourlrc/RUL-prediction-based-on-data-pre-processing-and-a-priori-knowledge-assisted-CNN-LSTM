@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+from PyEMD import CEEMDAN,visualisation
+import numpy as np
+import pandas as pd
+
+records=pd.read_excel("./B18rongliang.xls")
+ceemdan=CEEMDAN.CEEMDAN()
+c_imfs = ceemdan.ceemdan(np.array(records).ravel())
+imfs, res = c_imfs[:-1],c_imfs[-1]
+vis=visualisation.Visualisation()
+vis.plot_imfs(imfs, res )
